@@ -5,128 +5,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
+
     <title>Note app</title>
 </head>
+   
+<body>  <nav  >
+    <div class="nav-center">
+        <!-- nav header -->
+        <div class="nav-header">
+        Note app
+            <button class="nav-toggle">
+                <i class="fas fa-bars" style=" color: #f7f6f3;"></i>
+            </button>
+            
+        </div>
+        <!-- Links-->
+        <ul class="links ">
+            <li>
+                <a id="btn-filter">filter
+                    <select class="options">
+                    <option> </option>
+                </select>
+                    <i class="fas fa-location-arrow fa-xs"></i>
+                </a>
+            </li>
+            <li>
+                <a class="add-note"> New Note
+                    <i class="fas fa-street-view fa-xs"></i>
+                </a>
+            </li>
+            <li>
+                <a> Pics
+                    <i class="fas fa-random fa-xs"></i>
+                </a>
+            </li> 
+        </ul>
 
-<body>
+    </div>
+</nav>
+      <!-- <div class="filter container">
+                <button id="btn-filter">filter</button> 
+            </div>  -->
+    <div class="grid">
+            
+        <div id="form-box" class="container hide">
+           
 
-    <div class="container">
-        <h1 class="title"> Note app</h1>
+            <div class="note-form  container2 box">
 
-        <div class="note-form  container2 box">
-
-            <div class="tags container form">
-                <label> Tags</label> <input id="new-tag" type="text">
-                <button class="tag-btn"> add tag</button>
-                <div class="tag-container"></div>
-            </div>
-
-            <div class="form">
-                <div class="container">
-                    <label> Title</label> <input id="title" type="text">
+                <div class="tags container form ">
+                    <label> Tags</label> <input id="new-tag" type="text">
+                    <button class="tag-btn"> add tag</button>
+                    <div class="tag-container"></div>
                 </div>
-                <div class="container"><label> Note</label>
-                    <textarea rows="5" cols="22" id="body" type="text"></textarea>
-                  <button class="note-btn">New Note</button>
+
+                <div class="form">
+                    <div class="container">
+                        <label> Title</label> <input id="title" type="text">
+                    </div>
+                    <div class="container"><label> Note</label>
+                        <textarea rows="5" cols="22" id="body" type="text"></textarea>
+                        <button class="note-btn">New Note</button>
+                    </div>
+                </div>
+            </div>
+          
+                 </div>
+  
+
+            <div class="container2 box" id="notes">
+                <h3 class="note-title"> title</h3>
+                <p class="note-text"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id laudantium saepe
+                    quaerat
+                    ad corrupti at? Eaque quo nemo esse </p>
+                <div class="note-tags"> <span class="tag">futbol</span>
+                    <span class="tag">sports</span>
                 </div>
 
-              
+
             </div>
-
-
-
         </div>
-        <div class="filter">
-            <button id="btn-filter">filter</button> <select class="options">
-                <option> </option>
-            </select>
-        </div>
-
-        <div class="container box" id="notes">
-            <h3 class="note-title"> title</h3>
-            <p class="note-text"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id laudantium saepe quaerat
-                ad corrupti at? Eaque quo nemo esse </p>
-            <div class="note-tags"> <span class="tag">futbol</span>
-                <span class="tag">sports</span>
-            </div>
-
-
-        </div>
-
     </div>
 
     <script src="app.js"></script>
-    <style>
-        * {
-            padding: 0;
-            margin: 0;
-            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-        }
 
-        .title {
-
-            margin: 2rem;
-        }
-
-        .container {
-            padding: 0.24rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-
-
-        .container2 {
-            padding: 0.24rem;
-            display: flex;
-            align-items: start;
-            justify-content: space-between;
-            flex-direction: row-reverse;
-        }
-
-        .note {
-            padding: 0.24rem;
-            margin: 0.5rem;
-            max-width: 40vw;
-            min-width: 20vw;
-            border: 2px solid black;
-            background-color: rgba(21, 57, 91, 0.491);
-            border-radius: 15px;
-            color: white;
-
-        }
-
-        .tag {
-            background-color: rgb(130, 83, 29);
-            border-radius: 15px;
-            padding: .25rem;
-            border: 2px solid black;
-            color: rgb(201, 190, 190);
-            margin-top: 4rem;
-            font-size: .5rem;
-        }
-
-        .box {
-            border-radius: 15px;
-            padding: .75rem;
-            border: 2px solid black;
-            background-color: rgb(192, 196, 195);
-
-        }
-
-        .filter {
-            margin: 1rem;
-        }
-
-        .form input,
-        button,
-        textarea {
-            border-radius: 15px;
-            padding: .25rem;
-            margin: 0.4rem;
-        }
-    </style>
 </body>
 
 </html>

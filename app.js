@@ -4,6 +4,8 @@ const addTag= document.querySelector('.tag-btn')
 const tagContainer=document.querySelector('.tag-container')
 const categoryTags=document.querySelector('.options')
 const btnFilter = document.querySelector('#btn-filter')
+const newNote = document.querySelector('.add-note');
+const formBox = document.getElementById('form-box')
 
 const noteTitle = document.querySelector('#title')
 const noteBody = document.querySelector('#body')
@@ -136,7 +138,7 @@ function displayCategories (categoryArray) {
 }
 
 
-function insertCategories (allNotes){
+function  insertCategories (allNotes){
   uniqueCategories =  tagsCategories(allNotes)
   
   categoryTags.innerHTML =  displayCategories(uniqueCategories)
@@ -149,3 +151,18 @@ function saveToLocalStorage() {
     localStorage.setItem("allNotesData", JSON.stringify(allNotes));
   }
   
+
+  newNote.addEventListener('click', ()=>{
+    formBox.classList.toggle('hide')
+
+  })
+
+
+  ///////////////////////////////////////   n a v b a r /////////////////////////////////////////////
+  const navBtn = document.querySelector('.nav-toggle');
+const links = document.querySelector('.links');
+
+navBtn.addEventListener('click', function(){
+    links.classList.toggle('show-links')
+  
+})
