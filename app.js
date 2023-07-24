@@ -6,6 +6,8 @@ const categoryTags = document.querySelector('.options')
 const btnFilter = document.querySelector('#btn-filter')
 const newNote = document.querySelector('.add-note');
 const formBox = document.getElementById('form-box')
+const updateBtn = document.querySelector('.update-note-btn')
+const noteHandler = document.querySelector('.note-index')
 
 const noteTitle = document.querySelector('#title')
 const noteBody = document.querySelector('#body')
@@ -51,11 +53,36 @@ addNote.addEventListener('click', function () {
 
 });
 
+updateBtn.addEventListener('click', function(){
+  let index = noteHandler.querySelector('p').dataset.index;
+
+  const updateNote = {}
+  updateNote.title = noteTitle.value  // toma los valores de los input
+  updateNote.body = noteBody.value
+  updateNote.tags = [...tags];
+ 
+ 
+
+  allNotes[index]=(updateNote)  // envia la nueva nota al array
+
+  displayNotes(allNotes);  // renderiza las nuevas notas
+  insertCategories(allNotes)
+  saveToLocalStorage();
+ tagContainer.innerHTML = ''; // para sacar los tags agregados
+  tags = []; 
+  noteTitle.value = '';
+  noteBody.value = '';
+
+  noteHandler.querySelector('p').remove()
+  formBox.classList.toggle('hide')
+})
 
 
 //   a g r e g  a r     tags a la nota
 addTag.addEventListener('click', function () {
-  tags.push(newTag.value)  // toma los valores de los input
+ let tagToPush = newTag.value.toLowerCase()
+ tagToPush = tagToPush.charAt(0).toUpperCase()+tagToPush.slice(1)
+  tags.push(tagToPush)  // toma los valores de los input
   newTag.value = '';
   tagContainer.innerHTML = displayTags(tags);  // renderiza las nuevas notas
 
@@ -123,16 +150,27 @@ function displayNotes(notes) {
   notesContainer.innerHTML = displayNotes;
 
   const deleteBtns = notesContainer.querySelectorAll(".delete"); // selecciono los btns que cree para agregarle lso event listener
-  console.log(deleteBtns)
+  const updateBtns = notesContainer.querySelectorAll(".update"); // selecciono los btns que cree para agregarle lso event listener
 
 
 
+  ///  btn de eliminar
   deleteBtns.forEach(function (btn) {
     btn.addEventListener("click", function (e) {
-      // aca agregamos el data-id en el html para que pueda rastrearse el evento con ese id
-      // filtramos por categoria que matecha con el id, que es el mismo nombre de la categoria
+    
       const noteIndex = e.currentTarget.dataset.id;
      deleteNote(noteIndex)
+
+
+    });
+  });
+    /// btn de modificar
+  updateBtns.forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
+      addNote.classList.add('hide')
+      updateBtn.classList.remove('hide')
+      const noteIndex = e.currentTarget.dataset.id;
+     updateNote(noteIndex)
 
 
     });
@@ -142,6 +180,21 @@ function displayNotes(notes) {
 
 
 }
+
+function updateNote(noteIndex){
+ noteToModify = allNotes[noteIndex]
+ noteTitle.value =noteToModify.title // toma los valores de los input
+  noteBody.value = noteToModify.body
+  tags = noteToModify.tags
+  if(formBox.classList.contains('hide')){
+    formBox.classList.toggle('hide')
+  }
+  tagContainer.innerHTML = displayTags(noteToModify.tags);  // renderiza las nuevas notas
+    noteHandler.innerHTML = `<p data-index=${noteIndex}>  ${noteIndex} </p>` 
+
+  
+}
+
 
 function deleteNote(noteIndex){
   allNotes.splice(noteIndex,1)
@@ -166,7 +219,7 @@ function tagsCategories(allNotes) {
 
   let uniqueCategories = new Set(allTags)
   uniqueCategories = [...uniqueCategories, "All"] // debo pasarlo a array ya que crea un objeto
-  console.log(uniqueCategories)
+ 
   return uniqueCategories
 }
 
