@@ -8,6 +8,7 @@ const newNote = document.querySelector('.add-note');
 const formBox = document.getElementById('form-box')
 const updateBtn = document.querySelector('.update-note-btn')
 const noteHandler = document.querySelector('.note-index')
+const closeBtn= document.querySelector('.close-btn')
 
 const noteTitle = document.querySelector('#title')
 const noteBody = document.querySelector('#body')
@@ -42,16 +43,34 @@ addNote.addEventListener('click', function () {
   newNote.title = noteTitle.value  // toma los valores de los input
   newNote.body = noteBody.value
   newNote.tags = [...tags];
-  tags = [];
-  tagContainer.innerHTML = '';// para sacar los tags agregados
-  noteTitle.value = '';
-  noteBody.value = '';
+
+  newNote.archived = false
+  newNote.lastModified = dateTimeNow()
+   
+  cleanInputs()
   allNotes.push(newNote)  // envia la nueva nota al array
   displayNotes(allNotes);  // renderiza las nuevas notas
   insertCategories(allNotes)
   saveToLocalStorage();
 
 });
+
+
+function dateTimeNow () {
+  return  {
+    editedDate: new Date().toISOString().replace(/T.*/, '').split('-').reverse().join('-'),
+    editedHour: new Date().getHours(),
+    editedMinute: new Date().getMinutes()}
+}
+
+function cleanInputs(){
+  tags = [];
+  tagContainer.innerHTML = '';// para sacar los tags agregados
+  noteTitle.value = '';
+  noteBody.value = '';
+  if(!noteHandler.querySelector('p')==null){
+  noteHandler.querySelector('p').remove()}
+}
 
 updateBtn.addEventListener('click', function(){
   let index = noteHandler.querySelector('p').dataset.index;
@@ -60,6 +79,7 @@ updateBtn.addEventListener('click', function(){
   updateNote.title = noteTitle.value  // toma los valores de los input
   updateNote.body = noteBody.value
   updateNote.tags = [...tags];
+  updateNote.lastModified = dateTimeNow();
  
  
 
@@ -68,12 +88,9 @@ updateBtn.addEventListener('click', function(){
   displayNotes(allNotes);  // renderiza las nuevas notas
   insertCategories(allNotes)
   saveToLocalStorage();
- tagContainer.innerHTML = ''; // para sacar los tags agregados
-  tags = []; 
-  noteTitle.value = '';
-  noteBody.value = '';
+  cleanInputs()
 
-  noteHandler.querySelector('p').remove()
+
   formBox.classList.toggle('hide')
 })
 
@@ -130,19 +147,24 @@ function displayNotes(notes) {
 
     let allTags = displayTags(note.tags)
     return ` <div class="container note">
-         <h3 class="note-title"> ${note.title}</h3>
-<p class="note-text"> ${note.body} </p>
+         <h3 class="note-title"> ${note.title}</h3> 
+<p class="note-text"><span class="text-bg">  ${note.body}</span> </p>   
 <div class="note-tags"> ${allTags}
              </div>                              
-             <div class="container3">
-    
+             <div class="container4">
+                <div>
+                   <p class="note-edited">Last modified ${note.lastModified.editedDate}
+                                                  ${note.lastModified.editedHour}  
+                                                  ${note.lastModified.editedMinute}           </p>
+                 </div>
+           <div>
              <span class="cursor delete" data-id=${notes.indexOf(note)}> <i
                      class="fas fa-trash sm-fa-2x icono-down"></i></span>
              <span class="cursor update" data-id=${notes.indexOf(note)}> <i
                      class="fas fa-pencil-alt sm-fa-2x icono-down"></i> </span>
              <span class="cursor archived" data-id=${notes.indexOf(note)} > <i
                      class="fas fa-archive sm-fa-2x icono-down"></i></span>
-       
+                     </div>
          </div>
 </div>`})
 
@@ -263,4 +285,12 @@ const links = document.querySelector('.links');
 navBtn.addEventListener('click', function () {
   links.classList.toggle('show-links')
 
+})
+
+
+////// close btn
+
+closeBtn.addEventListener('click', ()=>{
+  formBox.classList.toggle('hide')
+  cleanInputs();
 })

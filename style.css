@@ -46,12 +46,22 @@
       /*      transform: translate(-950px); */
            display: none;
         }
+        .note-text{
+            font-size: .75rem;
+            color: rgb(228, 223, 223);
+            background-color: #6e6d6d99;
+            box-shadow: 5px 5px #323131ca;
+            border-radius: 8px;
+            padding: .2rem;
+            
+        }
+  
 
         .container2 {
             padding: 0.24rem;
             display: flex;
             align-items: start;
-            justify-content: space-between;
+            justify-content: center;
             flex-direction: row-reverse;
             flex-wrap: wrap;
         }
@@ -64,10 +74,26 @@
         .cursor{
             cursor: pointer;
         }
+
+        .note-edited {
+            font-size: .6rem;
+            color: #000000;
+            font-family: 'Times New Roman', Times, serif;
+            background-color: #6a69699e;
+            border-radius: 7px;
+            padding: 0.2rem;
+            
+        }
+        .container4{
+            display: inline-flex;
+            justify-content: space-around;
+            align-content: center;
+            width: 100%;
+        }
         .note {
             padding: 0.24rem;
             margin: 0.5rem;
-            max-width: 40vw;
+            max-width: 20vw;
             min-width: 20vw;
             border: 1px solid black;
             background: rgb(244, 237, 244);
@@ -77,7 +103,7 @@
             min-height: 7rem;
             color: rgb(28, 27, 27);
             display: flex;
-            align-items: flex-end;
+            align-items: center;
             justify-content: space-around;
             font-family: Calibri, 'Trebuchet MS', sans-serif;
             
@@ -99,12 +125,12 @@
             ;
             text-align: center;
             border-radius: 20rem;
-            ;
+          
         }
 
         .note-title {
             color: rgb(199, 195, 195);
-            color: #d2d8d9;
+            color: #f7fafb;
             text-shadow: 7px 7px 4px rgb(70, 69, 69),
             5px 5px 4px rgb(70, 69, 69),
             2px 2px 2px rgb(70, 69, 69),
@@ -118,9 +144,12 @@
             background-color: var(--primary);
             border-radius: 15px;
             padding: .25rem;
+            box-shadow: 5px 5px #423c23ca;
             /* border: 2px solid black; */
             color: rgb(3, 0, 0);
-            margin-top: 4rem;
+         
+            margin: 1.5rem 0.2rem; 
+
             font-size: .55rem;
             font-weight: 900;
             font-family: 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
