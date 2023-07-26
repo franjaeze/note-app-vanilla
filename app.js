@@ -273,7 +273,7 @@ function saveToLocalStorage() {
 
 
 newNote.addEventListener('click', () => {
-  formBox.classList.toggle('hide')
+  testDialog.showModal()
 
 })
 
@@ -293,4 +293,21 @@ navBtn.addEventListener('click', function () {
 closeBtn.addEventListener('click', ()=>{
   formBox.classList.toggle('hide')
   cleanInputs();
+})
+
+
+///////////////////////////// modal
+
+const openModal = document.querySelector('.open-dialog')
+const closeModal = document.querySelector('.close-dialog')
+const testDialog= document.querySelector('.test-dialog')
+
+/* openModal.addEventListener('click',()=>{
+  testDialog.showModal()
+
+}) */
+
+closeModal.addEventListener('click',()=>{
+  testDialog.close()
+
 })

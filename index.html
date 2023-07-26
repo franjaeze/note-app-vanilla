@@ -47,7 +47,28 @@
       <!-- <div class="filter container">
                 <button id="btn-filter">filter</button> 
             </div>  -->
-    <div class="grid">
+    <div class="container">
+        
+        <dialog class="test-dialog"> 
+          
+            <div class="tags container form ">
+                <label> Tags</label> <input id="new-tag" type="text">
+                <button class="tag-btn"> add tag</button>
+                <div class="tag-container"></div>
+            </div>
+
+            <div class="form">
+                <div class="container">
+                    <label> Title</label> <input id="title" type="text">
+                </div>
+                <div class="container"><label> Note</label>
+                    <textarea rows="5" cols="22" id="body" type="text"></textarea>
+                    <button class="note-btn">New Note</button>
+                    <button class="update-note-btn hide">Update Note</button><p class="note-index"></p>
+                </div>
+            </div>
+            <button class="close-dialog"> close</button>
+        </dialog>
             
         <div id="form-box" class="container hide">
             <div class="note-form  container2 box">
