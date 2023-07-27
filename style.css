@@ -20,12 +20,13 @@
         
 
         body {
-            background-image: linear-gradient(to bottom,
+           background-image: linear-gradient(to bottom,
                     rgba(85, 85, 85, 0.232),
-                    rgba(157, 157, 160, 0.202)), url(IMG_0231.JPG);
-            color: rgb(224, 218, 218);
+                    rgba(157, 157, 160, 0.202)), url(IMG_0231.JPG);  
+            color: rgb(240, 244, 237);
             background-position: center;
             background-size: cover;
+            background-color: #ae863032;
 
         }
 
@@ -48,10 +49,10 @@
         }
         .note-text{
             font-size: .75rem;
-            color: rgb(228, 223, 223);
-            background-color: #6e6d6d99;
-            box-shadow: 5px 5px #323131ca;
-            border-radius: 8px;
+            color: rgb(39, 38, 38);
+          /*   background-color: #0f6e9d19; */
+         /*    box-shadow: 8px 8px #0f6e9d19; */
+            border-radius: 2px;
             padding: .2rem;
             
         }
@@ -79,8 +80,7 @@
             font-size: .6rem;
             color: #000000;
             font-family: 'Times New Roman', Times, serif;
-            background-color: #6a69699e;
-            border-radius: 7px;
+       
             padding: 0.2rem;
             
         }
@@ -96,8 +96,8 @@
             max-width: 20vw;
             min-width: 20vw;
             border: 1px solid black;
-            background: rgb(244, 237, 244);
-            border-radius: 45px;
+      
+            border-radius: 12px;
             min-width: 15rem;
             padding: .5rem;
             min-height: 7rem;
@@ -110,7 +110,7 @@
             /*             background: linear-gradient(180deg,   rgba(9, 4, 69, 0.822)0%, rgb(148, 146, 146) 67%, rgba(96, 81, 51, 0.593) 80%);
                      */
             background: transparent;
-            background-color: rgba(128, 128, 125, 0.529);
+            background-color: rgba(213, 200, 159, 0.529);
             box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 
 
@@ -134,19 +134,18 @@
             text-shadow: 7px 7px 4px rgb(70, 69, 69),
             5px 5px 4px rgb(70, 69, 69),
             2px 2px 2px rgb(70, 69, 69),
-            0px 0px 4px rgb(70, 69, 69),
-            -2px -2px 4px rgb(40, 38, 38);
+            0px 0px 4px rgb(70, 69, 69) ;
         }
 
 
 
         .tag {
-            background-color: var(--primary);
+            background-color:rgba(200, 149, 54, 0.765);
             border-radius: 15px;
-            padding: .25rem;
-            box-shadow: 5px 5px #423c23ca;
+            padding: .15rem;
+            box-shadow: 2px 2px #423c23ca;
             /* border: 2px solid black; */
-            color: rgb(3, 0, 0);
+            color: rgb(42, 11, 11);
          
             margin: 1.5rem 0.2rem; 
 
@@ -175,14 +174,7 @@
                 7px 6px 1px #ccc;
         }
 
-        .box {
-            border-radius: 15px;
-            padding: .75rem;
-            /*  border: 5px solid black; */
-            box-shadow: 5px 5px 55px 55px rgba(53, 52, 52, 0.527);
-            /*   background-color: rgba(109, 111, 110, 0.196); */
-
-        }
+       
 
         .filter {
             margin: 1rem;
@@ -253,13 +245,13 @@
     
     }
     .nav-center{
-        background-color: #44444488;
+        background-color: #02215088;
     }
 
  
         .nav-toggle{    /*  ACA ESCONDO EL HAMBURG MENU EN PANTALLA GRANDE */
             width: 3rem;
-            background-color:  rgba(60, 58, 58, 0.869);
+            background-color:  rgba(19, 41, 97, 0.869);
             border: none;
         }
         

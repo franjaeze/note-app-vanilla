@@ -14,6 +14,12 @@ const noteTitle = document.querySelector('#title')
 const noteBody = document.querySelector('#body')
 const newTag = document.querySelector('#new-tag')
 
+///////////////////////////// modal
+
+const openModal = document.querySelector('.open-dialog')
+const closeModal = document.querySelector('.close-dialog')
+const testDialog= document.querySelector('.test-dialog')
+
 
 let allNotes = [];
 
@@ -52,6 +58,8 @@ addNote.addEventListener('click', function () {
   displayNotes(allNotes);  // renderiza las nuevas notas
   insertCategories(allNotes)
   saveToLocalStorage();
+ 
+  testDialog.close()
 
 });
 
@@ -68,7 +76,7 @@ function cleanInputs(){
   tagContainer.innerHTML = '';// para sacar los tags agregados
   noteTitle.value = '';
   noteBody.value = '';
-  if(!noteHandler.querySelector('p')==null){
+  if(noteHandler.querySelector('p')!=null){
   noteHandler.querySelector('p').remove()}
 }
 
@@ -89,9 +97,10 @@ updateBtn.addEventListener('click', function(){
   insertCategories(allNotes)
   saveToLocalStorage();
   cleanInputs()
-
-
-  formBox.classList.toggle('hide')
+  addNote.classList.remove('hide')  
+  updateBtn.classList.add('hide')
+ 
+  testDialog.close()
 })
 
 
@@ -189,7 +198,7 @@ function displayNotes(notes) {
     /// btn de modificar
   updateBtns.forEach(function (btn) {
     btn.addEventListener("click", function (e) {
-      addNote.classList.add('hide')
+      addNote.classList.add('hide')  
       updateBtn.classList.remove('hide')
       const noteIndex = e.currentTarget.dataset.id;
      updateNote(noteIndex)
@@ -208,9 +217,7 @@ function updateNote(noteIndex){
  noteTitle.value =noteToModify.title // toma los valores de los input
   noteBody.value = noteToModify.body
   tags = noteToModify.tags
-  if(formBox.classList.contains('hide')){
-    formBox.classList.toggle('hide')
-  }
+  testDialog.showModal();
   tagContainer.innerHTML = displayTags(noteToModify.tags);  // renderiza las nuevas notas
     noteHandler.innerHTML = `<p data-index=${noteIndex}>  ${noteIndex} </p>` 
 
@@ -296,11 +303,6 @@ closeBtn.addEventListener('click', ()=>{
 })
 
 
-///////////////////////////// modal
-
-const openModal = document.querySelector('.open-dialog')
-const closeModal = document.querySelector('.close-dialog')
-const testDialog= document.querySelector('.test-dialog')
 
 /* openModal.addEventListener('click',()=>{
   testDialog.showModal()
@@ -309,5 +311,6 @@ const testDialog= document.querySelector('.test-dialog')
 
 closeModal.addEventListener('click',()=>{
   testDialog.close()
+  cleanInputs()
 
 })
