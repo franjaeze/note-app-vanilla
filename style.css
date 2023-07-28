@@ -192,7 +192,11 @@
         }
 
         .test-dialog{
+
             border-radius: 10px;
+       /*      border-radius : 190px 190px 25px 25px; */
+/*             clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%); */
+ 
             padding: .5rem;
             margin: auto;
             background: transparent;
@@ -201,7 +205,9 @@
                      
 
         }
-
+        .right-align{
+            float: right;
+        }
         dialog::backdrop{
             background-color: rgba(251, 251, 245, 0.104); 
         }
