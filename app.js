@@ -1,3 +1,6 @@
+ 
+import { takeNoteFromServer, formatFecha, updateOnServer,deleteFromServer, displayTags } from "./functions.js";
+
 const notesContainer = document.querySelector('#notes');
 const addNote = document.querySelector('.note-btn')
 const addTag = document.querySelector('.tag-btn')
@@ -25,36 +28,13 @@ const testDialog= document.querySelector('.test-dialog')
 let allNotes = [];
 let user_email = 'fran@gmail.com';  /// hardcodeo de email acaaaaa
 let tags = []
+let newTags =[]
 
 window.addEventListener("DOMContentLoaded",  async ()=> {  /// para ejecutar ni bien se carge la pagina
- /*  const storedNotes = localStorage.getItem("allNotesData");
+  allNotes = await takeNoteFromServer()
 
-  if (storedNotes) {
-    allNotes = JSON.parse(storedNotes);
-    displayNotes(allNotes);
-    insertCategories(allNotes);
-  } */
- 
-
- await displayNotes();
-  /*  displayMenuButtons(); */
-
-
-    
-  
-
-
-
+ await displayNotes(allNotes);
 });
-
-
-const takeNoteFromServer = async() =>{
-  
-    let userNotes = await axios.get('http://localhost:5000/todos/note_tags') 
-    
-    return userNotes.data
-} 
-
 
 
 // funcion para agregar nota al array
@@ -65,46 +45,33 @@ addNote.addEventListener('click', async()=> {
   newNote.user_email = user_email;
  
   let newTags = [...tags]; /// arreglar
-
   newNote.archived = false
-/*   newNote.last_modified = dateTimeNow() */
-   
+
   cleanInputs()
-  
- let tagAdapter = {}
- let tagNoteRelation = {}
-  console.log(newNote)
- /*  allNotes.push(newNote) */  // envia la nueva nota al array
+  let tagAdapter = {}
    let noteId = await axios.post('http://localhost:5000/todos',newNote) 
+
+   ////     itera entre los tags para enviarlos el server
    for (const tag of newTags) {
      tagAdapter.name = tag.tag_name
-    console.log(tagAdapter);
-    const response = await axios.post('http://localhost:5000/tags', tagAdapter);
+ 
+    const tagId = await axios.post('http://localhost:5000/tags', tagAdapter);
     let tagNoteRelation= {
       note_id: noteId.data,
-      tag_id: response.data
+      tag_id: tagId.data
     }
-    console.log(tagNoteRelation)
-    const relation = await axios.post('http://localhost:5000/note_tag_relation', tagNoteRelation);
-      
-   
-    
+
+    const relation = await axios.post('http://localhost:5000/note_tag_relation', tagNoteRelation); 
+ 
   }
+  allNotes =  await takeNoteFromServer()
   displayNotes(allNotes);  // renderiza las nuevas notas
   insertCategories(allNotes)
-  saveToLocalStorage();
- 
+
   testDialog.close()
 
 });
 
-
-function dateTimeNow () {
-  return  {
-    editedDate: new Date().toISOString().replace(/T.*/, '').split('-').reverse().join('-'),
-    editedHour: new Date().getHours(),
-    editedMinute: new Date().getMinutes()}
-}
 
 function cleanInputs(){
   tags = [];
@@ -123,14 +90,31 @@ updateBtn.addEventListener('click', async()=>{
   updateNote.text = noteBody.value
   updateNote.user_email= user_email;  //// harcode de mail aca!!!!!
   updateNote.archived = false;               // tmb harcodeo el archived!!!!
-/*   updateNote.tags = [...tags]; */
-/*   updateNote.lastModified = dateTimeNow(); */
- 
- 
+   
+   let tagWithoutId = [];
+   for (const objeto of tags) {
+     if (!objeto.hasOwnProperty("tag_id")) {
+      tagWithoutId.push(objeto);
+        
+     }
+   }
+      let tagAdapter = {};
+    ////     itera entre los tags para enviarlos el server
+    for (const tag of tagWithoutId) {
+      tagAdapter.name = tag.tag_name
+  
+     const tagId = await axios.post('http://localhost:5000/tags', tagAdapter);
+     let tagNoteRelation= {
+       note_id: id,
+       tag_id: tagId.data
+     }
+     const relation = await axios.post('http://localhost:5000/note_tag_relation', tagNoteRelation); 
+ }
+
   await updateOnServer(updateNote, id)
   // envia la nueva nota al server
-
-  await displayNotes();  // renderiza las nuevas notas
+  allNotes= await takeNoteFromServer()
+  await displayNotes(allNotes);  // renderiza las nuevas notas
 
   cleanInputs()
   addNote.classList.remove('hide')  
@@ -153,17 +137,17 @@ addTag.addEventListener('click', function () {
 });
 
 
-
+////            filtrado de notas
 btnFilter.addEventListener('click', function () {
-  categoryFilter = categoryTags.value
-  console.log(categoryFilter)
+  let categoryFilter = categoryTags.value
+ 
   let notesFiltered = [];
   if (categoryFilter === "All") {
     displayNotes(allNotes);
   } else {
     allNotes.forEach(e => {
       e.tags.forEach(tag => {
-              console.log(tag)
+            
         if (tag.tag_name === categoryFilter) {
     
           notesFiltered.push(e)
@@ -179,23 +163,13 @@ btnFilter.addEventListener('click', function () {
 })
 
 
-/// mostratr tags
-function displayTags(tags) {
-  let displayTags = tags.map(tag => {
-    return `<span class="tag">${tag.tag_name}</span> `
-  })
 
-  displayTags = displayTags.join("");
-  /*  tagContainer.innerHTML = displayTags ;  */
-  return displayTags
-
-}
 
 // mostrar notas
-const displayNotes = async () => {
-  let notes = await takeNoteFromServer()
+const displayNotes = async (notes) => {
+
  
-  allNotes = notes;
+
   insertCategories(allNotes)
   let displayNotes = notes.map(note => {
  
@@ -226,17 +200,7 @@ const displayNotes = async () => {
   const deleteBtns = notesContainer.querySelectorAll(".delete"); // selecciono los btns que cree para agregarle lso event listener
   const updateBtns = notesContainer.querySelectorAll(".update"); // selecciono los btns que cree para agregarle lso event listener
 
-  function formatFecha(fechaISO) {
-    const fecha = new Date(fechaISO);
-  
-    const horas = fecha.getUTCHours().toString().padStart(2, '0');
-    const minutos = fecha.getUTCMinutes().toString().padStart(2, '0');
-    const dia = fecha.getUTCDate().toString().padStart(2, '0');
-    const mes = (fecha.getUTCMonth() + 1).toString().padStart(2, '0'); // Sumamos 1 porque los meses son base 0 en JavaScript
-    const anio = fecha.getUTCFullYear();
-  
-    return `${horas}:${minutos} hs ${dia}-${mes}-${anio}`;
-  }
+ 
 
   ///  btn de eliminar
   deleteBtns.forEach(function (btn) {
@@ -266,7 +230,7 @@ const displayNotes = async () => {
 }
 
 const updateNote = (noteId) =>{
- noteToModify = allNotes.filter(note => note.note_id == noteId)[0]
+ let noteToModify = allNotes.filter(note => note.note_id == noteId)[0]
  noteTitle.value =noteToModify.note_title // toma los valores de los input
   noteBody.value = noteToModify.text
   tags = noteToModify.tags
@@ -278,22 +242,14 @@ const updateNote = (noteId) =>{
 }
 
 
-function deleteNote(id){
- deleteFromServer(id)
-  displayNotes(); 
+const deleteNote = async(id)=> {
+  await deleteFromServer(id)
+  allNotes = await takeNoteFromServer()
+  displayNotes(allNotes); 
 
 }
 
-const deleteFromServer =  async (id) =>{
-  result = await axios.delete(`http://localhost:5000/todos/${id}`) 
-}
 
-const   updateOnServer = async(updateNote, id) =>{
-  console.log(updateNote)
-  result = await axios.put(`http://localhost:5000/todos/${id}`, updateNote) 
-  console.log(result.data)
-
-}
 function tagsCategories(allNotes) {
   let allTags = [];
   allNotes.forEach(note => {
@@ -325,17 +281,12 @@ function displayCategories(categoryArray) {
 
 
 function insertCategories(allNotes) {
-  uniqueCategories = tagsCategories(allNotes)
+ let uniqueCategories = tagsCategories(allNotes)
 
   categoryTags.innerHTML = displayCategories(uniqueCategories)
 
 }
 
-////      local storage function
-
-function saveToLocalStorage() {
-  localStorage.setItem("allNotesData", JSON.stringify(allNotes));
-}
 
 
 newNote.addEventListener('click', () => {
@@ -360,13 +311,6 @@ closeBtn.addEventListener('click', ()=>{
   formBox.classList.toggle('hide')
   cleanInputs();
 })
-
-
-
-/* openModal.addEventListener('click',()=>{
-  testDialog.showModal()
-
-}) */
 
 closeModal.addEventListener('click',()=>{
   testDialog.close()
