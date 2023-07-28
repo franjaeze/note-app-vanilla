@@ -21,40 +21,75 @@ const closeModal = document.querySelector('.close-dialog')
 const testDialog= document.querySelector('.test-dialog')
 
 
+ 
 let allNotes = [];
-
+let user_email = 'fran@gmail.com';  /// hardcodeo de email acaaaaa
 let tags = []
 
-window.addEventListener("DOMContentLoaded", function () {  /// para ejecutar ni bien se carge la pagina
-  const storedNotes = localStorage.getItem("allNotesData");
+window.addEventListener("DOMContentLoaded",  async ()=> {  /// para ejecutar ni bien se carge la pagina
+ /*  const storedNotes = localStorage.getItem("allNotesData");
+
   if (storedNotes) {
     allNotes = JSON.parse(storedNotes);
     displayNotes(allNotes);
     insertCategories(allNotes);
-  }
+  } */
+ 
 
-  displayNotes(allNotes);
+ await displayNotes();
   /*  displayMenuButtons(); */
-  insertCategories(allNotes)
+
+
+    
+  
+
+
+
 });
 
 
-
+const takeNoteFromServer = async() =>{
+  
+    let userNotes = await axios.get('http://localhost:5000/todos/note_tags') 
+    
+    return userNotes.data
+} 
 
 
 
 // funcion para agregar nota al array
-addNote.addEventListener('click', function () {
+addNote.addEventListener('click', async()=> {
   const newNote = {}
   newNote.title = noteTitle.value  // toma los valores de los input
-  newNote.body = noteBody.value
-  newNote.tags = [...tags];
+  newNote.text = noteBody.value
+  newNote.user_email = user_email;
+ 
+  let newTags = [...tags]; /// arreglar
 
   newNote.archived = false
-  newNote.lastModified = dateTimeNow()
+/*   newNote.last_modified = dateTimeNow() */
    
   cleanInputs()
-  allNotes.push(newNote)  // envia la nueva nota al array
+  
+ let tagAdapter = {}
+ let tagNoteRelation = {}
+  console.log(newNote)
+ /*  allNotes.push(newNote) */  // envia la nueva nota al array
+   let noteId = await axios.post('http://localhost:5000/todos',newNote) 
+   for (const tag of newTags) {
+     tagAdapter.name = tag.tag_name
+    console.log(tagAdapter);
+    const response = await axios.post('http://localhost:5000/tags', tagAdapter);
+    let tagNoteRelation= {
+      note_id: noteId.data,
+      tag_id: response.data
+    }
+    console.log(tagNoteRelation)
+    const relation = await axios.post('http://localhost:5000/note_tag_relation', tagNoteRelation);
+      
+   
+    
+  }
   displayNotes(allNotes);  // renderiza las nuevas notas
   insertCategories(allNotes)
   saveToLocalStorage();
@@ -80,22 +115,23 @@ function cleanInputs(){
   noteHandler.querySelector('p').remove()}
 }
 
-updateBtn.addEventListener('click', function(){
-  let index = noteHandler.querySelector('p').dataset.index;
+updateBtn.addEventListener('click', async()=>{
+  let id = noteHandler.querySelector('p').dataset.id;
 
   const updateNote = {}
   updateNote.title = noteTitle.value  // toma los valores de los input
-  updateNote.body = noteBody.value
-  updateNote.tags = [...tags];
-  updateNote.lastModified = dateTimeNow();
+  updateNote.text = noteBody.value
+  updateNote.user_email= user_email;  //// harcode de mail aca!!!!!
+  updateNote.archived = false;               // tmb harcodeo el archived!!!!
+/*   updateNote.tags = [...tags]; */
+/*   updateNote.lastModified = dateTimeNow(); */
  
  
+  await updateOnServer(updateNote, id)
+  // envia la nueva nota al server
 
-  allNotes[index]=(updateNote)  // envia la nueva nota al array
+  await displayNotes();  // renderiza las nuevas notas
 
-  displayNotes(allNotes);  // renderiza las nuevas notas
-  insertCategories(allNotes)
-  saveToLocalStorage();
   cleanInputs()
   addNote.classList.remove('hide')  
   updateBtn.classList.add('hide')
@@ -108,7 +144,9 @@ updateBtn.addEventListener('click', function(){
 addTag.addEventListener('click', function () {
  let tagToPush = newTag.value.toLowerCase()
  tagToPush = tagToPush.charAt(0).toUpperCase()+tagToPush.slice(1)
-  tags.push(tagToPush)  // toma los valores de los input
+ 
+  let tagObject ={ tag_name : tagToPush};
+  tags.push(tagObject)  // toma los valores de los input
   newTag.value = '';
   tagContainer.innerHTML = displayTags(tags);  // renderiza las nuevas notas
 
@@ -118,13 +156,16 @@ addTag.addEventListener('click', function () {
 
 btnFilter.addEventListener('click', function () {
   categoryFilter = categoryTags.value
+  console.log(categoryFilter)
   let notesFiltered = [];
   if (categoryFilter === "All") {
     displayNotes(allNotes);
   } else {
     allNotes.forEach(e => {
-      e.tags.forEach(category => {
-        if (category === categoryFilter) {
+      e.tags.forEach(tag => {
+              console.log(tag)
+        if (tag.tag_name === categoryFilter) {
+    
           notesFiltered.push(e)
         }
 
@@ -141,7 +182,7 @@ btnFilter.addEventListener('click', function () {
 /// mostratr tags
 function displayTags(tags) {
   let displayTags = tags.map(tag => {
-    return `<span class="tag">${tag}</span> `
+    return `<span class="tag">${tag.tag_name}</span> `
   })
 
   displayTags = displayTags.join("");
@@ -151,27 +192,29 @@ function displayTags(tags) {
 }
 
 // mostrar notas
-function displayNotes(notes) {
+const displayNotes = async () => {
+  let notes = await takeNoteFromServer()
+ 
+  allNotes = notes;
+  insertCategories(allNotes)
   let displayNotes = notes.map(note => {
-
+ 
     let allTags = displayTags(note.tags)
     return ` <div class="container note">
-         <h3 class="note-title"> ${note.title}</h3> 
-<p class="note-text"><span class="text-bg">  ${note.body}</span> </p>   
+         <h3 class="note-title"> ${note.note_title}</h3> 
+<p class="note-text"><span class="text-bg">  ${note.text}</span> </p>   
 <div class="note-tags"> ${allTags}
              </div>                              
              <div class="container4">
                 <div>
-                   <p class="note-edited">Last modified ${note.lastModified.editedDate}
-                                                  ${note.lastModified.editedHour}  
-                                                  ${note.lastModified.editedMinute}           </p>
+                   <p class="note-edited">Last modified   ${formatFecha(note.last_modified)  }          </p>
                  </div>
            <div>
-             <span class="cursor delete" data-id=${notes.indexOf(note)}> <i
+             <span class="cursor delete" data-id=${note.note_id}> <i
                      class="fas fa-trash sm-fa-2x icono-down"></i></span>
-             <span class="cursor update" data-id=${notes.indexOf(note)}> <i
+             <span class="cursor update" data-id=${note.note_id}> <i
                      class="fas fa-pencil-alt sm-fa-2x icono-down"></i> </span>
-             <span class="cursor archived" data-id=${notes.indexOf(note)} > <i
+             <span class="cursor archived" data-id=${note.note_id} > <i
                      class="fas fa-archive sm-fa-2x icono-down"></i></span>
                      </div>
          </div>
@@ -183,14 +226,24 @@ function displayNotes(notes) {
   const deleteBtns = notesContainer.querySelectorAll(".delete"); // selecciono los btns que cree para agregarle lso event listener
   const updateBtns = notesContainer.querySelectorAll(".update"); // selecciono los btns que cree para agregarle lso event listener
 
-
+  function formatFecha(fechaISO) {
+    const fecha = new Date(fechaISO);
+  
+    const horas = fecha.getUTCHours().toString().padStart(2, '0');
+    const minutos = fecha.getUTCMinutes().toString().padStart(2, '0');
+    const dia = fecha.getUTCDate().toString().padStart(2, '0');
+    const mes = (fecha.getUTCMonth() + 1).toString().padStart(2, '0'); // Sumamos 1 porque los meses son base 0 en JavaScript
+    const anio = fecha.getUTCFullYear();
+  
+    return `${horas}:${minutos} hs ${dia}-${mes}-${anio}`;
+  }
 
   ///  btn de eliminar
   deleteBtns.forEach(function (btn) {
     btn.addEventListener("click", function (e) {
     
-      const noteIndex = e.currentTarget.dataset.id;
-     deleteNote(noteIndex)
+      const noteId = e.currentTarget.dataset.id;
+     deleteNote(noteId)
 
 
     });
@@ -200,8 +253,8 @@ function displayNotes(notes) {
     btn.addEventListener("click", function (e) {
       addNote.classList.add('hide')  
       updateBtn.classList.remove('hide')
-      const noteIndex = e.currentTarget.dataset.id;
-     updateNote(noteIndex)
+      const noteId = e.currentTarget.dataset.id;
+     updateNote(noteId)
 
 
     });
@@ -212,37 +265,43 @@ function displayNotes(notes) {
 
 }
 
-function updateNote(noteIndex){
- noteToModify = allNotes[noteIndex]
- noteTitle.value =noteToModify.title // toma los valores de los input
-  noteBody.value = noteToModify.body
+const updateNote = (noteId) =>{
+ noteToModify = allNotes.filter(note => note.note_id == noteId)[0]
+ noteTitle.value =noteToModify.note_title // toma los valores de los input
+  noteBody.value = noteToModify.text
   tags = noteToModify.tags
   testDialog.showModal();
   tagContainer.innerHTML = displayTags(noteToModify.tags);  // renderiza las nuevas notas
-    noteHandler.innerHTML = `<p data-index=${noteIndex}>  ${noteIndex} </p>` 
+    noteHandler.innerHTML = `<p data-id=${noteId}>  ${noteId} </p>` 
 
   
 }
 
 
-function deleteNote(noteIndex){
-  allNotes.splice(noteIndex,1)
-  displayNotes(allNotes);  // renderiza las nuevas notas
-  insertCategories(allNotes)
-  saveToLocalStorage();
+function deleteNote(id){
+ deleteFromServer(id)
+  displayNotes(); 
+
 }
 
+const deleteFromServer =  async (id) =>{
+  result = await axios.delete(`http://localhost:5000/todos/${id}`) 
+}
 
+const   updateOnServer = async(updateNote, id) =>{
+  console.log(updateNote)
+  result = await axios.put(`http://localhost:5000/todos/${id}`, updateNote) 
+  console.log(result.data)
 
-
+}
 function tagsCategories(allNotes) {
   let allTags = [];
   allNotes.forEach(note => {
     note.tags.forEach(tags => {
 
-      allTags.push(tags)
+      allTags.push(tags.tag_name)
 
-    })
+      })
 
   });
 
