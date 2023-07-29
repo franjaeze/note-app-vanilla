@@ -345,3 +345,16 @@ color.forEach(note => {
 
 
 })
+
+/// btn background
+
+const btnBg = document.getElementById('btn-bg')
+const body = document.getElementsByTagName('body')[0]
+btnBg.addEventListener('click', ()=>{
+  if(body.classList.contains('bg1')){
+    body.classList.remove('bg1')
+
+  }else {
+  body.classList.add('bg1')
+}
+})
