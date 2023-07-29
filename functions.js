@@ -9,7 +9,7 @@ export const takeNoteFromServer = async() =>{
 /// mostratr tags
 export function displayTags(tags) {
     let displayTags = tags.map(tag => {
-      return `<span class="tag">${tag.tag_name}</span> `
+      return `<span class="tag">  ${tag.tag_name} </span> `
     })
   
     displayTags = displayTags.join("");
@@ -19,7 +19,7 @@ export function displayTags(tags) {
   }
 export const deleteFromServer =  async (id) =>{
     return await axios.delete(`http://localhost:5000/todos/${id}`) 
-  }
+  } 
   
 export const   updateOnServer = async(updateNote, id) =>{
   
@@ -28,13 +28,15 @@ export const   updateOnServer = async(updateNote, id) =>{
   
   }
 export function formatFecha(fechaISO) {
-    const fecha = new Date(fechaISO);
-  
-    const horas = fecha.getUTCHours().toString().padStart(2, '0');
-    const minutos = fecha.getUTCMinutes().toString().padStart(2, '0');
-    const dia = fecha.getUTCDate().toString().padStart(2, '0');
-    const mes = (fecha.getUTCMonth() + 1).toString().padStart(2, '0'); // Sumamos 1 porque los meses son base 0 en JavaScript
-    const anio = fecha.getUTCFullYear();
+    const fecha = new Date(fechaISO)  
+    fecha.setHours(fecha.getHours() - 3);// sino me guarda con la hora de la Bd que son 2 o 3 hs diferencia
+
+ 
+    const horas = fecha.getHours().toString().padStart(2, '0');
+    const minutos = fecha.getMinutes().toString().padStart(2, '0');
+    const dia = fecha.getDate().toString().padStart(2, '0');
+    const mes = (fecha.getMonth() + 1).toString().padStart(2, '0'); // Sumamos 1 porque los meses son base 0 en JavaScript
+    const anio = fecha.getFullYear();
   
     return `${horas}:${minutos} hs ${dia}-${mes}-${anio}`;
   }

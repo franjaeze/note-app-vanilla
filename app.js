@@ -7,8 +7,8 @@ const addTag = document.querySelector('.tag-btn')
 const tagContainer = document.querySelector('.tag-container')
 const categoryTags = document.querySelector('.options')
 const btnFilter = document.querySelector('#btn-filter')
-const newNote = document.querySelector('.add-note');
-const formBox = document.getElementById('form-box')
+const newNotetn = document.querySelector('.add-note');
+ 
 const updateBtn = document.querySelector('.update-note-btn')
 const noteHandler = document.querySelector('.note-index')
 const closeBtn= document.querySelector('.close-btn')
@@ -177,7 +177,7 @@ const displayNotes = async (notes) => {
     return ` <div class="container note">
          <h3 class="note-title"> ${note.note_title}</h3> 
 <p class="note-text"><span class="text-bg">  ${note.text}</span> </p>   
-<div class="note-tags"> ${allTags}
+<div class="note-tags"> ${allTags} 
              </div>                              
              <div class="container4">
                 <div>
@@ -289,7 +289,7 @@ function insertCategories(allNotes) {
 
 
 
-newNote.addEventListener('click', () => {
+newNotetn.addEventListener('click', () => {
   testDialog.showModal()
 
 })
@@ -307,13 +307,41 @@ navBtn.addEventListener('click', function () {
 
 ////// close btn
 
-closeBtn.addEventListener('click', ()=>{
-  formBox.classList.toggle('hide')
+/* closeBtn.addEventListener('click', ()=>{
+  console.log('cerrando')
+ 
   cleanInputs();
-})
+  testDialog.close()
+  console.log('cerrando')
+}) */
 
 closeModal.addEventListener('click',()=>{
+  console.log('cerrando')
   testDialog.close()
   cleanInputs()
+
+})
+
+
+/// dragable
+
+Sortable.create(notesContainer, {
+  animation: 250,
+  chosenClass: "selected",
+  dragClass: "drag"
+})
+
+/// btn color
+
+const btnColor = document.getElementById('btn-color')
+
+btnColor.addEventListener('click', ()=>{
+  let color = document.querySelectorAll('.note')
+color.forEach(note => {
+  note.addEventListener('click', ()=>{
+    note.classList.add('green')
+})
+});
+
 
 })

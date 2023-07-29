@@ -5,74 +5,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+        integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
+        crossorigin="anonymous"></script>
 
     <title>Note app</title>
 </head>
-   
-<body>  <nav  >
-    <div class="nav-center">
-        <!-- nav header -->
-        <div class="nav-header">
-        Note app
-            <button class="nav-toggle">
-                <i class="fas fa-bars" style=" color: #f7f6f3;"></i>
-            </button>
-            
-        </div>
-        <!-- Links-->
-        <ul class="links ">
-            <li>
-                <a id="btn-filter">Filter
-                    <select class="options">
-                    <option> </option>
-                </select>
-                  <!--   <i class="fas fa-location-arrow fa-xs"></i> -->
-                </a>
-            </li>
-            <li>
-                <a class="add-note"> New Note
-               <!--      <i class="fas fa-street-view fa-xs"></i> -->
-                </a>
-            </li>
-          <!--   <li>
-                <a> Pics
-                    <i class="fas fa-random fa-xs"></i>
-                </a>
-            </li>  -->
-        </ul>
 
-    </div>
-</nav>
-      <!-- <div class="filter container">
+<body>
+    <nav>
+        <div class="nav-center">
+            <!-- nav header -->
+            <div class="nav-header">
+                Note app
+                <button class="nav-toggle">
+                    <i class="fas fa-bars" style=" color: #f7f6f3;"></i>
+                </button>
+
+            </div>
+            <!-- Links-->
+            <ul class="links ">
+                <li>
+                    <button id="btn-color">Change Green
+                        <!-- <select >
+                            <option>Green </option>
+                        </select> -->
+  
+                    </button>
+                </li>
+                <li>
+                    <a id="btn-filter">Filter
+                        <select class="options">
+                            <option> </option>
+                        </select>
+ 
+                    </a>
+                </li>
+                <li>
+                    <a class="add-note"> New Note
+ 
+                    </a>
+                </li>
+           
+            </ul>
+
+        </div>
+    </nav>
+    <!-- <div class="filter container">
                 <button id="btn-filter">filter</button> 
             </div>  -->
     <div class="container">
-        
-        <dialog class="test-dialog"> 
-            <span class="close-dialog cursor right-align"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3 0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3 0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3 0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3 0 17L312 256l65.6 65.1z"/></svg></span>
-            <div class="tags container form ">
-                <label> Tags</label> <input id="new-tag" type="text">
-                <button class="tag-btn"> add tag</button>
-                <div class="tag-container"></div>
-            </div>
+
+        <dialog class="test-dialog">
+            <div class="close-dialog cursor right-align"><svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                    viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                    <path
+                        d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3 0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3 0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3 0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3 0 17L312 256l65.6 65.1z" />
+                </svg></div>
 
             <div class="form">
+
+
+
                 <div class="container">
                     <label> Title</label> <input id="title" type="text">
                 </div>
+                <div class="tags container form ">
+                    <label> Tags</label> <input id="new-tag" type="text">
+                    <button class="tag-btn"> add tag</button>
+                    <div class="tag-container"></div>
+                </div>
+
                 <div class="container"><label> Note</label>
                     <textarea rows="5" cols="22" id="body" type="text"></textarea>
-                    <span class="note-btn cursor"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"/></svg></span>
-                    <button class="update-note-btn hide">Update Note</button><p class="note-index"></p>
+                    <span class="note-btn cursor"><svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                            viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                            <path
+                                d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z" />
+                        </svg></span>
+                    <button class="update-note-btn hide">Update Note</button>
+                    <p class="note-index"></p>
                 </div>
             </div>
-          
+
         </dialog>
-            
+
         <div id="form-box" class="container hide">
             <div class="note-form  container2 box">
-           <div class="cursor close-btn"> <i class="far fa-times-circle"></i></div>
+                <div class="cursor close-btn"> <i class="far fa-times-circle"></i></div>
 
 
                 <div class="tags container form ">
@@ -88,29 +108,30 @@
                     <div class="container"><label> Note</label>
                         <textarea rows="5" cols="22" id="body" type="text"></textarea>
                         <button class="note-btn">New Note</button>
-                        <button class="update-note-btn hide">Update Note</button><p class="note-index"></p>
+                        <button class="update-note-btn hide">Update Note</button>
+                        <p class="note-index"></p>
                     </div>
                 </div>
             </div>
-          
-                 </div>
-  
 
-            <div class="container2 box" id="notes">
-                <h3 class="note-title"> title</h3>
-                <p class="note-text"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id laudantium saepe
-                    quaerat
-                    ad corrupti at? Eaque quo nemo esse </p>
-                <div class="note-tags"> <span class="tag">futbol</span>
-                    <span class="tag">sports</span>
-                </div>
+        </div>
 
 
+        <div class="container2 box" id="notes">
+            <h3 class="note-title"> title</h3>
+            <p class="note-text"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id laudantium saepe
+                quaerat
+                ad corrupti at? Eaque quo nemo esse </p>
+            <div class="note-tags"> <span class="tag">futbol</span>
+                <span class="tag">sports</span>
             </div>
+
+
         </div>
     </div>
+    </div>
 
-     
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type="module" src="app.js"></script>
 
