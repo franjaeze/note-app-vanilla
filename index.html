@@ -26,13 +26,14 @@
             <!-- Links-->
             <ul class="links ">
                 <li>
-                    <a id="btn-color">Change Green
+                    <a id="btn-color">Highlight
                         <!-- <select >
                             <option>Green </option>
                         </select> -->
   
                     </a>
-                    <a id="btn-bg">Change Bg
+                </li>  <li>
+                       <a id="btn-priorities">Priorities
                         <!-- <select >
                             <option>Green </option>
                         </select> -->
@@ -40,12 +41,20 @@
                     </a>
                 </li>
                 <li>
-                    <a id="btn-filter">Filter
-                        <select class="options">
+                    <a id="btn-bg">Background
+                        <!-- <select >
+                            <option>Green </option>
+                        </select> -->
+  
+                    </a>
+                </li>
+                <li>
+                 <span class="cursor show-filter">Filter</span>   <a id="btn-filter"> 
+                        <select class="options hide">
                             <option> </option>
                         </select>
- 
-                    </a>
+ </a>
+                    
                 </li>
                 <li>
                     <a class="add-note"> New Note
@@ -57,9 +66,11 @@
 
         </div>
     </nav>
-    <!-- <div class="filter container">
-                <button id="btn-filter">filter</button> 
-            </div>  -->
+    <div class="container canvas-box hide" >
+  <div class="to-do canvas"><h1>To do</h1> </div> 
+ <div class="priorities canvas"><h1> On proccess</h1> </div>  
+  <div class="finish canvas"> <h1>Finish</h1></div>     
+            </div>
     <div class="container">
 
         <dialog class="test-dialog">

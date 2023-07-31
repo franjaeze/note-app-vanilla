@@ -1,7 +1,9 @@
  
+  const webAddress = 'https://web-production-ab3a.up.railway.app/'
+
 export const takeNoteFromServer = async() =>{
   
-    let userNotes = await axios.get('http://localhost:5000/todos/note_tags') 
+    let userNotes = await axios.get(`${webAddress}todos/note_tags`) 
 
     return userNotes.data
 } 
@@ -18,12 +20,12 @@ export function displayTags(tags) {
   
   }
 export const deleteFromServer =  async (id) =>{
-    return await axios.delete(`http://localhost:5000/todos/${id}`) 
+    return await axios.delete(`${webAddress}todos/${id}`) 
   } 
   
 export const   updateOnServer = async(updateNote, id) =>{
   
-   return await axios.put(`http://localhost:5000/todos/${id}`, updateNote) 
+   return await axios.put(`${webAddress}todos/${id}`, updateNote) 
    
   
   }
