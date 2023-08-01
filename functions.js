@@ -1,6 +1,7 @@
  
-  const webAddress = 'https://web-production-ab3a.up.railway.app/'
+  /*const webAddress = 'http://localhost:5000/' */
 
+  const webAddress = 'https://web-production-ab3a.up.railway.app/'
 export const takeNoteFromServer = async() =>{
   
     let userNotes = await axios.get(`${webAddress}todos/note_tags`) 

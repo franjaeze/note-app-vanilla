@@ -390,6 +390,21 @@ background-color: #ae863032;
          margin: .4rem 0.8rem;
    
      }
+
+     body{
+        background-repeat: no-repeat;
+ 
+     }
+     .canvas-box{
+        display: flex;
+       flex-wrap: wrap;
+       flex-direction: column;
+     }
+     .hide {
+        /*      transform: translate(-950px); */
+        display: none;
+    }
+    
  }
 
 
@@ -405,7 +420,7 @@ background-color: #ae863032;
 
  .show-links {
      /*  SHOW ELEMENTS */
-     height: 10rem;
+     height: 13rem;
      color: white;
 
  }

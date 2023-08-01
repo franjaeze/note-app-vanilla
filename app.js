@@ -49,6 +49,9 @@ addNote.addEventListener('click', async()=> {
   let newTags = [...tags]; /// arreglar
   newNote.archived = false
 
+
+  /*const webAddress = 'http://localhost:5000/' */
+
   const webAddress = 'https://web-production-ab3a.up.railway.app/'
   cleanInputs()
   let tagAdapter = {}
