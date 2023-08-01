@@ -50,9 +50,9 @@ addNote.addEventListener('click', async()=> {
   newNote.archived = false
 
 
-  /*const webAddress = 'http://localhost:5000/' */
+  const webAddress = 'http://localhost:5000/'
 
-  const webAddress = 'https://web-production-ab3a.up.railway.app/'
+/*   const webAddress = 'https://web-production-ab3a.up.railway.app/' */
   cleanInputs()
   let tagAdapter = {}
    let noteId = await axios.post(`${webAddress}todos`,newNote) 
@@ -225,6 +225,7 @@ const displayNotes = async (notes) => {
       addNote.classList.add('hide')  
       updateBtn.classList.remove('hide')
       const noteId = e.currentTarget.dataset.id;
+      console.log('note id dataset ' + noteId)
      updateNote(noteId)
 
 
@@ -359,11 +360,23 @@ btnBg.addEventListener('click', ()=>{
   
   if(body.classList.contains('bg1')){
     body.classList.remove('bg1')
-
+    body.classList.add('bg2')
+  } else if(body.classList.contains('bg2')){
+    body.classList.remove('bg2')
+    
   }else {
   body.classList.add('bg1')
 }
 })
+
+///  responsible dragging
+
+ 
+
+
+
+
+
 
 /// btn priotities
 const prioritiesBox= document.querySelector('.priorities')
@@ -375,44 +388,99 @@ prioritiesBox.addEventListener("dragover",e =>{
 const dragable = document.querySelector('.dragging')
   prioritiesBox.appendChild(dragable)
 })
+prioritiesBox.addEventListener('drop', (e) => {
+  e.preventDefault();
+  if (activeNote) {
+    prioritiesBox.appendChild(activeNote);
+      activeNote.style.position = 'static';
+      activeNote = null;
+  }
+});
+
+
 todoBox.addEventListener("dragover",e =>{
   e.preventDefault();
 const dragable = document.querySelector('.dragging')
 todoBox.appendChild(dragable)
 })
+todoBox.addEventListener('drop', (e) => {
+  e.preventDefault();
+  if (activeNote) {
+    todoBox.appendChild(activeNote);
+      activeNote.style.position = 'static';
+      activeNote = null;
+  }
+});
+
+
 finishBox.addEventListener("dragover",e =>{
   e.preventDefault();
 const dragable = document.querySelector('.dragging')
 finishBox.appendChild(dragable)
 })
-
-const dragAllNotes = document.querySelectorAll('.note')
-dragAllNotes.forEach(note => {
-  note.addEventListener('dragstart', ()=>{
-    console.log('dragging!!!!')
-     note.classList.add('dragging')
-  })
-  note.addEventListener('dragend', ()=>{
-    note.classList.remove('dragging')
- })
-  
+finishBox.addEventListener('drop', (e) => {
+  e.preventDefault();
+  if (activeNote) {
+    finishBox.appendChild(activeNote);
+      activeNote.style.position = 'static';
+      activeNote = null;
+  }
 });
+
+
+
+
+
+let touchTimer; // necesario para el touch dragging
+let activeNote;
 
 
 function inciarDrag(){
   const dragAllNotes = document.querySelectorAll('.note')
 dragAllNotes.forEach(note => {
   note.addEventListener('dragstart', ()=>{
-    console.log('dragging!!!!')
+  console.log('add dragging class')
      note.classList.add('dragging')
   })
+ 
   note.addEventListener('dragend', ()=>{
+    console.log('removiendo draggging class')
     note.classList.remove('dragging')
  })
   
+ 
+/*  note.addEventListener('touchstart', (e) => {
+  e.preventDefault();
+  console.log('touch start');
+  touchTimer = setTimeout(() => {
+      note.classList.add('dragging');
+      activeNote = note;
+  }, 1000);
+});
+
+note.addEventListener('touchmove', (e) => {
+  e.preventDefault();
+                    clearTimeout(touchTimer);
+                    if (activeNote) {
+                        const touch = e.touches[0];
+                        const offsetX = touch.clientX - touch.target.getBoundingClientRect().left;
+                        const offsetY = touch.clientY - touch.target.getBoundingClientRect().top;
+                        activeNote.style.left = `-${touch.clientX - offsetX}px`;
+                        activeNote.style.top = `-${touch.clientY - offsetY}px`;
+                    }
+                });
+                
+note.addEventListener('touchend', () => {
+
+  clearTimeout(touchTimer);
+  activeNote = null;
+}); */
 });
 }
+ 
 
+
+/// btn priorities
  
 const btnPriorities = document.getElementById('btn-priorities')
 const canvasBox = document.querySelector('.canvas-box')
