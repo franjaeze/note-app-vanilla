@@ -50,9 +50,9 @@ addNote.addEventListener('click', async()=> {
   newNote.archived = false
 
 
-  const webAddress = 'http://localhost:5000/'
+/*   const webAddress = 'http://localhost:5000/' */
 
-/*   const webAddress = 'https://web-production-ab3a.up.railway.app/' */
+  const webAddress = 'https://web-production-ab3a.up.railway.app/'
   cleanInputs()
   let tagAdapter = {}
    let noteId = await axios.post(`${webAddress}todos`,newNote) 
