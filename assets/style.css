@@ -1,11 +1,11 @@
  :root {
      --primary: #6185F8;
-     --secondary: #a6552a;
+     --secondary: #a6552a; /*  #a6552a */
      /*  #f5c69d; */
-     --terciary: #954B0C;
+     --terciary: #a27029;
      --medium: #684632;
     --brown:#983502;
-     --enemy: #EEAF36;
+     --enemy: #752f0c;
      --green:#80D010;
 
      --text-color: #FCFCFC;
@@ -23,9 +23,9 @@
      grid-template-columns: 1fr 1fr;
  }
 
- .highlight {
+ .btn-active {
      text-decoration: underline;
-     background-color: #e39047;
+      
 
  }
 
@@ -38,11 +38,8 @@
      background-size: cover;
      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1440' height='900' preserveAspectRatio='none' viewBox='0 0 1440 900'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1089%26quot%3b)' fill='none'%3e%3crect width='1440' height='900' x='0' y='0' fill='rgba(97%2c 133%2c 248%2c 1)'%3e%3c/rect%3e%3cpath d='M1488 900L0 900 L0 588.69Q24.8 541.5%2c 72 566.3Q91.56 465.86%2c 192 485.42Q236.07 457.5%2c 264 501.57Q383.87 501.44%2c 384 621.31Q403.41 568.72%2c 456 588.14Q459.44 519.58%2c 528 523.01Q557.98 480.99%2c 600 510.96Q652.65 491.61%2c 672 544.26Q722.09 522.35%2c 744 572.44Q830.3 538.75%2c 864 625.05Q880.37 569.42%2c 936 585.79Q986.4 516.19%2c 1056 566.6Q1139.3 529.89%2c 1176 613.19Q1179.74 544.93%2c 1248 548.68Q1291.74 472.42%2c 1368 516.17Q1455.39 483.57%2c 1488 570.96z' fill='rgba(238%2c 175%2c 54%2c 1)'%3e%3c/path%3e%3cpath d='M1512 900L0 900 L0 652.16Q53.95 634.11%2c 72 688.05Q77.07 621.12%2c 144 626.19Q183.93 546.12%2c 264 586.05Q332.38 534.43%2c 384 602.82Q506 604.82%2c 504 726.81Q515.46 618.27%2c 624 629.73Q648.84 582.57%2c 696 607.41Q744.58 535.99%2c 816 584.57Q870.01 566.58%2c 888 620.59Q1002.88 615.47%2c 1008 730.34Q1033.87 684.21%2c 1080 710.07Q1122.4 632.47%2c 1200 674.87Q1213.95 568.82%2c 1320 582.77Q1361.8 552.57%2c 1392 594.36Q1457.18 539.54%2c 1512 604.72z' fill='rgba(104%2c 70%2c 50%2c 1)'%3e%3c/path%3e%3cpath d='M1488 900L0 900 L0 797.1Q44.08 769.18%2c 72 813.26Q113.49 782.75%2c 144 824.23Q161.88 770.11%2c 216 787.99Q246.5 698.5%2c 336 729Q378.98 699.98%2c 408 742.96Q508.34 723.3%2c 528 823.64Q538.88 762.52%2c 600 773.4Q630.03 731.43%2c 672 761.47Q721.31 690.78%2c 792 740.08Q806.81 682.89%2c 864 697.71Q937.64 651.35%2c 984 724.99Q1097.64 718.63%2c 1104 832.28Q1104.35 712.63%2c 1224 712.98Q1254.55 671.53%2c 1296 702.08Q1347.58 681.66%2c 1368 733.25Q1462.39 707.64%2c 1488 802.03z' fill='rgba(149%2c 75%2c 12%2c 1)'%3e%3c/path%3e%3cpath d='M1512 900L0 900 L0 863.19Q71.71 862.9%2c 72 934.61Q80.14 870.75%2c 144 878.9Q162.04 824.94%2c 216 842.98Q252.31 759.29%2c 336 795.59Q385.27 772.87%2c 408 822.14Q504.99 799.13%2c 528 896.12Q577.46 873.58%2c 600 923.04Q645.43 896.47%2c 672 941.91Q677.63 827.54%2c 792 833.17Q819.51 788.68%2c 864 816.19Q889.45 769.64%2c 936 795.1Q1025.69 764.8%2c 1056 854.49Q1098.26 824.75%2c 1128 867.02Q1158.15 777.17%2c 1248 807.33Q1292.84 780.17%2c 1320 825.01Q1398.72 831.73%2c 1392 910.44Q1467.1 865.54%2c 1512 940.64z' fill='white'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1089'%3e%3crect width='1440' height='900' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1440' height='900' preserveAspectRatio='none' viewBox='0 0 1440 900'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1091%26quot%3b)' fill='none'%3e%3crect width='1440' height='900' x='0' y='0' fill='rgba(97%2c 133%2c 248%2c 1)'%3e%3c/rect%3e%3cpath d='M1488 900L0 900 L0 510.52Q71.13 461.64%2c 120 532.77Q174.66 515.43%2c 192 570.09Q235.63 541.72%2c 264 585.35Q309.96 511.31%2c 384 557.27Q413.54 466.81%2c 504 496.35Q585.8 458.15%2c 624 539.96Q709.47 505.43%2c 744 590.9Q793.75 520.64%2c 864 570.39Q888.62 523%2c 936 547.62Q963.81 455.43%2c 1056 483.25Q1132.42 439.67%2c 1176 516.09Q1279.11 499.2%2c 1296 602.31Q1319.21 505.51%2c 1416 528.72Q1434.95 475.67%2c 1488 494.62z' fill='rgba(245%2c 198%2c 157%2c 1)'%3e%3c/path%3e%3cpath d='M1464 900L0 900 L0 626.13Q99.57 605.7%2c 120 705.28Q132.3 597.58%2c 240 609.87Q306.02 555.89%2c 360 621.92Q421.33 611.25%2c 432 672.57Q475.63 596.2%2c 552 639.82Q638.72 606.54%2c 672 693.25Q697.18 598.43%2c 792 623.62Q835.79 595.41%2c 864 639.2Q945.05 600.25%2c 984 681.3Q989.15 614.45%2c 1056 619.61Q1084.65 576.26%2c 1128 604.92Q1182.36 587.28%2c 1200 641.64Q1266.15 635.79%2c 1272 701.94Q1320.13 678.07%2c 1344 726.19Q1345.25 607.44%2c 1464 608.69z' fill='rgba(104%2c 70%2c 50%2c 1)'%3e%3c/path%3e%3cpath d='M1536 900L0 900 L0 834.34Q40.82 755.16%2c 120 795.98Q120 723.99%2c 192 723.99Q221.45 681.44%2c 264 710.9Q371.9 698.8%2c 384 806.7Q431.25 781.95%2c 456 829.2Q475.08 776.28%2c 528 795.35Q516.28 711.63%2c 600 699.92Q654.73 634.65%2c 720 689.38Q792.06 641.44%2c 840 713.51Q915.58 717.09%2c 912 792.67Q977.26 737.93%2c 1032 803.2Q1102.59 753.79%2c 1152 824.38Q1153.41 753.79%2c 1224 755.2Q1261.04 672.24%2c 1344 709.27Q1372.14 665.41%2c 1416 693.55Q1509.78 667.33%2c 1536 761.1z' fill='rgba(149%2c 75%2c 12%2c 1)'%3e%3c/path%3e%3cpath d='M1464 900L0 900 L0 823.42Q94.74 798.16%2c 120 892.91Q164.78 817.69%2c 240 862.47Q259.58 810.05%2c 312 829.62Q398.45 796.07%2c 432 882.52Q449.91 828.43%2c 504 846.35Q575.3 797.65%2c 624 868.95Q692.37 817.32%2c 744 885.68Q752.5 822.18%2c 816 830.68Q841.02 783.7%2c 888 808.72Q943.86 792.58%2c 960 848.43Q1061.51 829.94%2c 1080 931.45Q1084.17 863.62%2c 1152 867.79Q1177.19 772.98%2c 1272 798.18Q1341.37 747.55%2c 1392 816.92Q1455.26 808.17%2c 1464 871.43z' fill='white'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1091'%3e%3crect width='1440' height='900' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
-     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1440' height='900' preserveAspectRatio='none' viewBox='0 0 1440 900'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1098%26quot%3b)' fill='none'%3e%3crect width='1440' height='900' x='0' y='0' fill='rgba(97%2c 133%2c 248%2c 1)'%3e%3c/rect%3e%3cpath d='M1512 900L0 900 L0 524.87Q83.78 488.65%2c 120 572.43Q222.05 554.48%2c 240 656.53Q286.39 582.92%2c 360 629.31Q349.37 546.68%2c 432 536.05Q463.99 448.04%2c 552 480.03Q625.88 433.91%2c 672 507.79Q701.35 465.14%2c 744 494.49Q795.51 474%2c 816 525.51Q870.36 459.87%2c 936 514.23Q957.83 464.06%2c 1008 485.89Q1049.84 455.73%2c 1080 497.57Q1164.02 461.59%2c 1200 545.6Q1317.54 543.14%2c 1320 660.68Q1345.06 613.74%2c 1392 638.8Q1427.43 554.23%2c 1512 589.66z' fill='rgba(104%2c 70%2c 50%2c 1)'%3e%3c/path%3e%3cpath d='M1464 900L0 900 L0 719.89Q70.72 718.61%2c 72 789.33Q125.02 722.35%2c 192 775.37Q201.99 713.36%2c 264 723.34Q308.2 695.54%2c 336 739.73Q350.55 682.28%2c 408 696.82Q475.41 644.24%2c 528 711.65Q531.59 643.24%2c 600 646.83Q668.18 595.01%2c 720 663.19Q813.12 636.31%2c 840 729.42Q920.56 689.98%2c 960 770.55Q1035.72 726.27%2c 1080 802Q1094.6 696.6%2c 1200 711.19Q1240.53 631.73%2c 1320 672.26Q1332.17 612.43%2c 1392 624.61Q1433.82 594.43%2c 1464 636.25z' fill='rgba(149%2c 75%2c 12%2c 1)'%3e%3c/path%3e%3cpath d='M1464 900L0 900 L0 779.04Q82.35 741.38%2c 120 823.73Q213.71 845.44%2c 192 939.16Q148.13 823.29%2c 264 779.42Q385.06 828.48%2c 336 949.55Q310.33 851.88%2c 408 826.2Q427.25 773.46%2c 480 792.71Q507.79 748.5%2c 552 776.3Q606.45 758.75%2c 624 813.2Q713.08 830.28%2c 696 919.36Q737.23 888.59%2c 768 929.82Q837.08 878.9%2c 888 947.98Q918.53 858.51%2c 1008 889.05Q988.56 797.61%2c 1080 778.17Q1130.76 708.92%2c 1200 759.68Q1308.38 748.05%2c 1320 856.43Q1341.94 806.37%2c 1392 828.31Q1401.24 765.54%2c 1464 774.78z' fill='rgba(255%2c 255%2c 255%2c 1)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1098'%3e%3crect width='1440' height='900' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
      background-color: #ae863032;
-     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1440' height='900' preserveAspectRatio='none' viewBox='0 0 1440 900'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1007%26quot%3b)' fill='none'%3e%3crect width='1440' height='900' x='0' y='0' fill='rgba(97%2c 133%2c 248%2c 1)'%3e%3c/rect%3e%3cpath d='M1512 900L0 900 L0 593.91Q45.49 567.4%2c 72 612.89Q80.16 549.05%2c 144 557.21Q142.84 484.05%2c 216 482.88Q368.45 515.33%2c 336 667.78Q291.26 551.04%2c 408 506.31Q542.14 520.45%2c 528 654.59Q505.9 560.5%2c 600 538.4Q632.72 451.12%2c 720 483.83Q801.6 445.43%2c 840 527.03Q961.29 528.32%2c 960 649.61Q948.27 565.88%2c 1032 554.15Q1049.59 499.74%2c 1104 517.32Q1150.4 491.73%2c 1176 538.13Q1249.48 539.62%2c 1248 613.1Q1240.4 533.5%2c 1320 525.91Q1335.34 469.25%2c 1392 484.58Q1457.48 430.06%2c 1512 495.54z' fill='rgba(166%2c 85%2c 42%2c 1)'%3e%3c/path%3e%3cpath d='M1488 900L0 900 L0 760.72Q2.53 691.25%2c 72 693.78Q81.15 630.93%2c 144 640.08Q172.61 596.69%2c 216 625.3Q301.32 590.62%2c 336 675.93Q448.25 668.18%2c 456 780.43Q481.55 685.98%2c 576 711.53Q623.38 686.91%2c 648 734.29Q695.96 710.25%2c 720 758.2Q764.77 730.98%2c 792 775.75Q810.82 674.57%2c 912 693.38Q944.5 605.88%2c 1032 638.39Q1078.7 613.09%2c 1104 659.78Q1149.35 633.13%2c 1176 678.47Q1254.59 637.06%2c 1296 715.64Q1357.63 705.26%2c 1368 766.89Q1440.62 719.51%2c 1488 792.13z' fill='rgba(253%2c 252%2c 252%2c 1)'%3e%3c/path%3e%3cpath d='M1488 900L0 900 L0 803.25Q68.21 751.46%2c 120 819.67Q228.53 808.2%2c 240 916.73Q281.87 838.6%2c 360 880.46Q456.18 856.64%2c 480 952.83Q491.13 891.96%2c 552 903.08Q516.49 795.57%2c 624 760.06Q754.2 770.26%2c 744 900.46Q799.86 884.32%2c 816 940.18Q882.52 886.7%2c 936 953.23Q943.81 889.04%2c 1008 896.85Q1014.28 783.13%2c 1128 789.41Q1178.61 720.02%2c 1248 770.63Q1322.52 725.15%2c 1368 799.67Q1435.13 746.8%2c 1488 813.93z' fill='rgba(104%2c 70%2c 50%2c 1)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1007'%3e%3crect width='1440' height='900' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
      /* position:absolute */
-     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1440' height='900' preserveAspectRatio='none' viewBox='0 0 1440 900'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1009%26quot%3b)' fill='none'%3e%3crect width='1440' height='900' x='0' y='0' fill='rgba(97%2c 133%2c 248%2c 1)'%3e%3c/rect%3e%3cpath d='M1464 900L0 900 L0 616.23Q59.69 603.92%2c 72 663.62Q102.09 621.71%2c 144 651.8Q120.38 556.17%2c 216 532.55Q229.77 474.32%2c 288 488.09Q331.92 460.01%2c 360 503.93Q504.78 528.71%2c 480 673.48Q477.42 598.9%2c 552 596.33Q557.15 481.49%2c 672 486.64Q823.13 517.77%2c 792 668.91Q786.25 543.16%2c 912 537.41Q949.97 455.38%2c 1032 493.35Q1097.28 438.63%2c 1152 503.91Q1231.19 511.11%2c 1224 590.3Q1310.39 556.69%2c 1344 643.08Q1369.53 548.61%2c 1464 574.13z' fill='rgba(128%2c 208%2c 16%2c 1)'%3e%3c/path%3e%3cpath d='M1464 900L0 900 L0 704.64Q84.34 668.98%2c 120 753.32Q142.17 655.49%2c 240 677.66Q248.7 614.36%2c 312 623.05Q353.66 592.71%2c 384 634.38Q501.53 631.91%2c 504 749.44Q548.49 721.93%2c 576 766.42Q595.88 666.29%2c 696 686.17Q766.58 636.75%2c 816 707.32Q899.22 670.54%2c 936 753.76Q992.25 738%2c 1008 794.25Q1012.28 726.53%2c 1080 730.81Q1106.69 637.5%2c 1200 664.19Q1280.28 624.48%2c 1320 704.76Q1376.58 689.34%2c 1392 745.91Q1417.35 699.25%2c 1464 724.6z' fill='rgba(253%2c 252%2c 252%2c 1)'%3e%3c/path%3e%3cpath d='M1488 900L0 900 L0 762.46Q52.56 743.02%2c 72 795.58Q124.53 728.12%2c 192 780.65Q284.53 753.18%2c 312 845.72Q377.95 791.67%2c 432 857.62Q454.63 760.25%2c 552 782.88Q595.36 754.24%2c 624 797.59Q645.03 746.63%2c 696 767.66Q758.15 757.81%2c 768 819.96Q795.43 775.39%2c 840 802.83Q894.53 785.37%2c 912 839.9Q946.88 754.78%2c 1032 789.67Q1080.84 718.5%2c 1152 767.34Q1207.34 750.68%2c 1224 806.02Q1326.97 836.99%2c 1296 939.96Q1277.38 849.35%2c 1368 830.73Q1420.78 763.51%2c 1488 816.29z' fill='rgba(104%2c 70%2c 50%2c 1)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1009'%3e%3crect width='1440' height='900' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
     background-size: auto;
 
  }
@@ -396,9 +393,10 @@ background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/s
      fill: #403403;
  }
 
- .green {
-     background-color: var(--terciary);
-     opacity: 0.8;
+ .highlight {
+     background-color: var(--brown);
+     opacity:1.2;
+ 
  }
 
  #btn-color {
@@ -436,67 +434,9 @@ background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/s
          flex-wrap: wrap;
          flex-direction: column;
      }
-
-     .hide {
-         /*      transform: translate(-950px); */
-         display: none;
-     }
-
+ 
  }
-
-
-
-
- .links {
-     /*  TO HIDE THE NAVBAR ELEMENTOS */
-     list-style-type: none;
-     height: 0;
-     overflow: hidden;
-     transition: .5s all;
- }
-
- .show-links {
-     /*  SHOW ELEMENTS */
-     height: 13rem;
-     color: white;
-
- }
-
- .links li {
-     font-size: 1.2rem;
-     padding: 0.5rem;
-     margin: 0.25rem;
- }
-
- .nav-header {
-
-     display: flex;
-     align-content: center;
-     justify-content: space-between;
-     color: white;
-     margin-left: 2.6rem;
-     align-items: center;
-     font-size: 1.5rem;
-
-
- }
-
- ul {
-     margin-right: 2.6rem;
-     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
- }
-
- .nav-center {
-     background-color: #02215088;
- }
-
-
- .nav-toggle {
-     /*  ACA ESCONDO EL HAMBURG MENU EN PANTALLA GRANDE */
-     width: 2.5rem;
-     background-color: rgba(19, 41, 97, 0.869);
-     border: none;
- }
+ 
 
  .svg-inline--fa.fa-w-14 {
      font-size: 1.25rem;
@@ -504,55 +444,14 @@ background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/s
 
  @media screen and (min-width:800px) {
 
-     .nav-center {
-
-
-         display: flex;
-         align-items: center;
-         justify-content: space-between;
-         /*   padding:1rem */
-     }
-
-     .nav-header {
-         padding: 0;
-     }
-
-     .nav-toggle {
-         /*  ACA ESCONDO EL HAMBURG MENU EN PANTALLA GRANDE */
-         display: none;
-     }
-
-     .links {
-         /*  NAVABAR MAGICCCCCC */
-         display: flex;
-         /* Aca esta la magia de que los links se alinean bien */
-         height: auto;
-         /* y aca para que tengan altura auto y no se muestren uno encima dle otro */
-
-     }
-
-     .links li {
-         transition: .5s all;
-         padding: 0;
-         margin: 0.25rem .75rem;
-         color: white;
-
-     }
-
-     li a {
-         color: white;
-     }
-
-     .links li:hover {
-         transform: translateY(-0.25rem);
-         color: rgb(144, 144, 149);
-         background: transparent;
-     }
-
-     .nav-center {
-
-         padding: 0 2rem;
-
-
-     }
+     
  }
+
+ 
+ @media screen and (min-width:1400px) {
+
+    body {
+        background-size: cover;
+    
+    
+    }}

@@ -1,0 +1,150 @@
+ul {
+  
+    font-family: serif;
+}
+.nav-header{
+    color: black;
+}
+
+ 
+.nav-center {
+    background: rgb(57,101,244);
+    background: linear-gradient(180deg, rgb(30, 80, 247) 0%, rgb(29, 80, 248) 77%, rgb(71, 112, 246) 92%);
+    
+}
+ 
+
+
+.nav-toggle {
+    /*  ACA ESCONDO EL HAMBURG MENU EN PANTALLA GRANDE */
+    width: 2.5rem;
+    background-color: rgba(19, 41, 97, 0.869);
+    border: none;
+}
+
+
+@media screen and (max-width: 750px) {
+ 
+ 
+ 
+    .hide {
+        /*      transform: translate(-950px); */
+        display: none;
+    }
+
+}
+
+
+
+
+.links {
+    /*  TO HIDE THE NAVBAR ELEMENTOS */
+    list-style-type: none;
+    height: 0;
+    overflow: hidden;
+    transition: .5s all;
+}
+
+.show-links {
+    /*  SHOW ELEMENTS */
+    height: 13rem;
+    color: white;
+
+}
+
+.links li {
+    font-size: 1.0rem;
+    padding: 0.5rem;
+    margin: 0.25rem;
+}
+
+.nav-header {
+
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    color: white;
+    margin-left: 2.6rem;
+    align-items: center;
+    font-size: 1.5rem;
+
+
+}
+
+ul {
+    margin-right: 2.6rem;
+   
+}
+
+
+.nav-toggle {
+    /*  ACA ESCONDO EL HAMBURG MENU EN PANTALLA GRANDE */
+    width: 2.5rem;
+    border: none;
+}
+
+.svg-inline--fa.fa-w-14 {
+    font-size: 1.25rem;
+}
+
+
+    
+
+@media screen and (min-width:800px) {
+
+    .nav-center {
+
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        /*   padding:1rem */
+    }
+
+    .nav-header {
+        padding: 0;
+    }
+
+    .nav-toggle {
+        /*  ACA ESCONDO EL HAMBURG MENU EN PANTALLA GRANDE */
+        display: none;
+    }
+
+    .links {
+        /*  NAVABAR MAGICCCCCC */
+        display: flex;
+        /* Aca esta la magia de que los links se alinean bien */
+        height: 2.5rem;
+        /* y aca para que tengan altura auto y no se muestren uno encima dle otro */
+        align-items: center;
+
+    }
+
+    .links li {
+        transition: .5s all;
+        padding: 0;
+        margin: 0.3rem .75rem;
+        color: white;
+
+    }
+
+    li a {
+        color: white;
+    }
+
+    .links li:hover {
+        transform: translateY(-0.25rem);
+        color: rgb(144, 144, 149);
+        background: transparent;
+    }
+
+    .nav-center {
+
+        padding: 0 2rem;
+
+
+    }
+}
+
+
+ 

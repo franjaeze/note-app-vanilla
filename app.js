@@ -344,11 +344,11 @@ btnColor.addEventListener('touchend', function(event) {
   highlightNote();
 })
 const highlightNote = () =>{
-  btnColor.classList.toggle("highlight")
+  btnColor.classList.toggle("btn-active")
   let color = document.querySelectorAll('.note')
 color.forEach(note => {
   note.addEventListener('click', ()=>{
-    note.classList.toggle('green')
+    note.classList.toggle('highlight')
 })
 });
 }
