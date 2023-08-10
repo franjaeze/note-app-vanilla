@@ -8,9 +8,9 @@ ul {
 
  
 .nav-center {
-    background: rgb(57,101,244);
-    background: linear-gradient(180deg, rgb(30, 80, 247) 0%, rgb(29, 80, 248) 77%, rgb(71, 112, 246) 92%);
-    
+    background: rgb(20, 38, 104);
+/*     background: linear-gradient(180deg, rgb(12, 23, 62) 0%, rgb(12, 23, 62) 77%,rgba(12, 23, 62, 0.435) 92%);
+ */    
 }
  
 
@@ -18,7 +18,7 @@ ul {
 .nav-toggle {
     /*  ACA ESCONDO EL HAMBURG MENU EN PANTALLA GRANDE */
     width: 2.5rem;
-    background-color: rgba(19, 41, 97, 0.869);
+    background-color: rgba(27, 58, 136, 0.869);
     border: none;
 }
 
@@ -84,7 +84,7 @@ ul {
 }
 
 .svg-inline--fa.fa-w-14 {
-    font-size: 1.25rem;
+    font-size: 1.05rem;
 }
 
 
